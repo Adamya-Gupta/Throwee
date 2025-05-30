@@ -1,6 +1,8 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
+// import { ClerkProvider } from "@clerk/nextjs/dist/types/components.server";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const poppins = Poppins({
   subsets:['latin'],
@@ -14,6 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body className={poppins.className}>
         <Provider>
@@ -21,5 +24,6 @@ export default function RootLayout({ children }) {
         </Provider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
