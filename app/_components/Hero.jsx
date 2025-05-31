@@ -18,7 +18,7 @@ function Hero() {
       <div className='flex gap-6 w-full max-w-2xl mt-10'>
         <input type="text" placeholder={Lookup.InputTitlePlaceholder} 
         className='p-3 border rounded-md w-full shadow-md'
-        onChange={(e)=>setLogoTitle(e?.target.value)}
+        onChange={(e)=>setLogoTitle(e.target.value)}
         />
         <Link href={'/create?title='+logoTitle}>
         <Button className="p-6 shadow-md">Get Started</Button>

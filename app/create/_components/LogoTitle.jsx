@@ -5,7 +5,7 @@ import Lookup from '@/app/_data/Lookup'
 import { useSearchParams } from 'next/navigation'
 
 
-function LogoTitle({onHandleInputChange}) {
+function LogoTitle({onHandleInputChange,formData}) {
     const searchParam=useSearchParams();
     
     const [title,setTitle]=useState(searchParam?.get('title')??'')
@@ -18,7 +18,7 @@ function LogoTitle({onHandleInputChange}) {
 
       <input type="text" placeholder={Lookup.InputTitlePlaceholder} 
       className='p-4 border rounded-lg mt-5 w-full'
-        defaultValue={title}
+        defaultValue={formData?.title}
         onChange={(e)=>onHandleInputChange(e.target.value)}
       />
     </div>
