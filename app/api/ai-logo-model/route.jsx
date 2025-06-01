@@ -1,10 +1,13 @@
 import { AILogoPrompt } from "@/app/configs/AiModel";
+import { db } from "@/app/configs/FirebaseConfig";
 import axios from "axios";
+import { doc, setDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
+
 
 export async function POST(req) {
     try {
-        const { prompt } = await req.json();
+        const { prompt ,email,title ,desc } = await req.json();
         const textResponse = await AILogoPrompt(prompt);
 
         // Extract JSON from Gemini-style markdown response
@@ -44,6 +47,15 @@ export async function POST(req) {
         console.log(base64ImageWithMime)
 
         //Saving to Firebase Database
+        try {
+            await setDoc(doc(db,"users",email,"logos",Date.now().toString()),{
+                image:base64ImageWithMime,
+                title:title,
+                desc:desc
+            })
+        } catch (error) {
+            
+        }
 
         return NextResponse.json({ image: base64ImageWithMime });
 
