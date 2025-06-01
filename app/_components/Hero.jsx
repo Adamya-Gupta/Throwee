@@ -4,10 +4,12 @@ import React, { useState } from 'react'
 import Lookup from '../_data/Lookup'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
-function Hero() {
+function Hero(formData) {
+  const searchParam=useSearchParams();
 
-  const [logoTitle,setLogoTitle]=useState();
+  const [logoTitle,setLogoTitle]=useState(searchParam?.get('logoTitle')??'');
 
   return (
     <div className='flex items-center mt-32 flex-col gap-5'>
@@ -18,6 +20,8 @@ function Hero() {
       <div className='flex gap-6 w-full max-w-2xl mt-10'>
         <input type="text" placeholder={Lookup.InputTitlePlaceholder} 
         className='p-3 border rounded-md w-full shadow-md'
+       
+        defaultValue={formData?.logoTitle}
         onChange={(e)=>setLogoTitle(e.target.value)}
         />
         <Link href={'/create?title='+logoTitle}>
