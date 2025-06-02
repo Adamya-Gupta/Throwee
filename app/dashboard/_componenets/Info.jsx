@@ -18,7 +18,7 @@ function Info() {
             </div>
 
             <div className='flex justify-between items-center mt-2'>
-                <h2>Dashboard</h2>
+                <h2 className='font-medium'>Your Dashboard</h2>
                 <Link href='/create'>
                 <Button>+ Create New Logo</Button>
                 </Link>
