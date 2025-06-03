@@ -1,11 +1,12 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Hero from "./_components/Hero";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
+      <Suspense fallback={<p>Loading Hero...</p>}>
      <Hero/>
+     </Suspense>
     </div>
   );
 }
