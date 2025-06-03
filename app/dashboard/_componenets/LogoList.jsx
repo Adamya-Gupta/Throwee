@@ -131,7 +131,7 @@ function LogoList() {
           logoList.map((logo, index) => (
             <div
               key={index}
-              className="relative group bg-white p-2 rounded-xl shadow hover:shadow-lg transition-all"
+              className="relative group bg-primary-foreground p-2 rounded-xl shadow hover:shadow-lg transition-all"
             >
               <div
                 onClick={() => ViewLogo(logo?.image)}
@@ -144,22 +144,26 @@ function LogoList() {
                   alt={logo?.title}
                   className="w-full h-auto object-cover rounded-lg"
                 />
-                <h2 className="text-center text-lg mt-2 font-medium truncate">
+                <h2 className="text-center text-lg mt-2 font-medium truncate text-cyan-950">
                   {logo?.title}
                 </h2>
-                <p className="text-sm text-gray-500 text-center truncate">
+                <p className="text-sm text-center truncate">
                   {logo?.desc}
                 </p>
               </div>
 
-              <div className="flex justify-center gap-3 mt-3">
-                <Button onClick={() => ViewLogo(logo?.image)} variant="outline" size="sm">
+              <div className="flex justify-center gap-3 mt-3 ">
+                <Button onClick={() => ViewLogo(logo?.image)} 
+                variant="outline" 
+                size="sm" 
+                className='cursor-pointer'>
                   View
                 </Button>
                 <Button
                   onClick={() => DeleteLogo(logo?.id)}
                   variant="destructive"
                   size="sm"
+                  className='cursor-pointer'
                 >
                   Delete
                 </Button>

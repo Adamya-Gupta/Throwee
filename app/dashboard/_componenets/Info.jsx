@@ -10,10 +10,10 @@ function Info() {
     return (
         <div>
             <div className='flex justify-between items-center'>
-                <h2 className='font-bold text-4xl text-primary'>Hello, {userDetail?.name}</h2>
+                <h2 className='font-bold sm:text-md md:text-xl lg:text-2xl xl:text-4xl text-primary'>Hello, {userDetail?.name}</h2>
                 <div className='flex items-center gap-2'>
-                    <Image src={'/coin.png'} alt='coin' width={40} height={40} />
-                    <h2 className='font-bold text-3xl'>{userDetail?.credits} Credit Left</h2>
+                    <Image src={'/coin.png'} alt='coin' width={40} height={40} className='w-5 lg:w-8 xl:10'/>
+                    <h2 className='font-bold sm:text-md md:text-xl lg:text-2xl xl:text-4xl'>{userDetail?.credits} Credit Left</h2>
                 </div>
             </div>
 
