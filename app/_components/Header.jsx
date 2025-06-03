@@ -58,7 +58,7 @@ function Header() {
         {user ? (
           <UserButton />
         ) : (
-          <div className="flex gap-2 bg-primary text-primary-foreground rounded-xl p-2.5 hover:scale-105 transition-all cursor-pointer">
+          <div className="flex gap-2 bg-primary text-primary-foreground rounded-md font-medium p-2 hover:scale-105 transition-all cursor-pointer">
             <SignedOut>
               <SignInButton />
             </SignedOut>
