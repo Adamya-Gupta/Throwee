@@ -1,6 +1,6 @@
 import React from 'react'
 import LogoList from './_componenets/LogoList'
-import Info from './_componenets/info'
+import Info from './_componenets/Info'
 
 
 function Dashboard() {
