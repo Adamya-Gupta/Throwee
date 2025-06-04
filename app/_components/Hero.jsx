@@ -5,7 +5,7 @@ import Lookup from '../_data/Lookup';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useUser } from '@clerk/nextjs';
+import { SignedOut, SignInButton, useUser } from '@clerk/nextjs';
 
 function Hero() {
   const { user } = useUser();
@@ -32,14 +32,18 @@ function Hero() {
           value={logoTitle}
           onChange={(e) => setLogoTitle(e.target.value)}
         />
-        {user?(
-         <Link href={`/create?title=${encodeURIComponent(logoTitle)}`}>
-          <Button className='p-6 shadow-md'>Get Started</Button>
-        </Link>
-        ):( <Link href={`https://diverse-gull-40.accounts.dev/sign-up`}>
-          <Button className='p-6 shadow-md'>Get Started</Button>
-        </Link>)}
-        
+        {user ? (
+          <Link href={`/create?title=${encodeURIComponent(logoTitle)}`}>
+            <Button className='p-6 shadow-md'>Get Started</Button>
+          </Link>
+        ) : (
+          <SignedOut>
+            <SignInButton>
+              <Button className='p-6 shadow-md'>Get Started</Button>
+            </SignInButton>
+          </SignedOut>
+        )}
+
       </div>
     </div>
   );
