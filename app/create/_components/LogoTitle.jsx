@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import HeadingDescription from './HeadingDescription'
 import Lookup from '@/app/_data/Lookup'
 import { useSearchParams } from 'next/navigation'
+import { Card ,CardContent, } from '@/components/ui/card';
+import { BorderBeam } from "@/components/magicui/border-beam";
 
 
 function LogoTitle({onHandleInputChange,formData}) {
@@ -11,7 +13,8 @@ function LogoTitle({onHandleInputChange,formData}) {
     // const [title,setTitle]=useState(searchParam?.get('title')??'')
 
   return (
-    <div className='my-10'>
+    <div className='my-10 relative'>
+      
       <HeadingDescription 
       title={Lookup?.LogoTitle}
       description={Lookup.LogoTitleDesc}/>
@@ -21,6 +24,7 @@ function LogoTitle({onHandleInputChange,formData}) {
         defaultValue={formData?.title}
         onChange={(e)=>onHandleInputChange(e.target.value)}
       />
+     
     </div>
   )
 }

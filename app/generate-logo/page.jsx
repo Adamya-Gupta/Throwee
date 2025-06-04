@@ -7,8 +7,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
+import { BorderBeam } from "@/components/magicui/border-beam";
 
 function GenerateLogo() {
+
+
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+
   const { userDetail } = useContext(UserDetailContext);
   const [formData, setFormData] = useState();
   const [loading, setLoading] = useState(false);
@@ -61,7 +70,7 @@ function GenerateLogo() {
 
   return (
     <div className="flex justify-center items-start pt-20 px-4">
-      <Card className="w-full max-w-md shadow-xl rounded-2xl p-6 ">
+      <Card className="w-full max-w-md shadow-xl rounded-2xl p-6 relative">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold ">
             Your Generated Logo
@@ -91,6 +100,11 @@ function GenerateLogo() {
             <p className="text-muted-foreground">No logo generated yet.</p>
           )}
         </CardContent>
+
+        {mounted && theme === 'dark' ? (
+          <BorderBeam duration={8} size={200} className="from-transparent via-green-500 to-transparent" />
+        ) : (<BorderBeam duration={8} size={200} className="from-transparent via-black to-transparent " />)}
+
       </Card>
     </div>
   );

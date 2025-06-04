@@ -22,8 +22,6 @@ export async function generateLogoIdeas(prompt) {
 
     const text = result.text;
     return text;
-
-
 }
 
 export async function AILogoPrompt(prompt) {

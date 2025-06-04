@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LogoTitle from './_components/LogoTitle'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -9,8 +9,15 @@ import LogoDesigns from './_components/LogoDesigns'
 import LogoIdea from './_components/LogoIdea'
 import LogoDesc from './_components/LogoDesc'
 import PricingModel from './_components/PricingModel'
+import { BorderBeam } from '@/components/magicui/border-beam'
+import { useTheme } from 'next-themes'
 
 function CreateLogo() {
+
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+      useEffect(() => setMounted(true), []);
+
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState();
 
@@ -25,7 +32,7 @@ function CreateLogo() {
     console.log(formData)
 
     return (
-        <div className='mt-20 p-10 border rounded-xl 2xl:mx-72'>
+        <div className='mt-10 p-5 border rounded-xl 2xl:mx-72 relative'>
            {step==1?
            <LogoTitle onHandleInputChange={(v) => onHandleInputChange('title', v)} formData={formData}/>:
            step==2?
@@ -47,7 +54,9 @@ function CreateLogo() {
                 {step != 1 && <Button variant="outline" onClick={()=>setStep(step-1)}> <ArrowLeft /> Previous</Button>}
                 <Button onClick={()=>setStep(step+1)}> <ArrowRight /> Next</Button>
             </div>
-
+            {mounted && theme === 'dark' ? (
+            <BorderBeam duration={8} size={200} className="from-transparent via-green-500 to-transparent"/>
+            ):(<BorderBeam duration={8} size={200} className="from-transparent via-black to-transparent "/>)}
 
         </div>
     )

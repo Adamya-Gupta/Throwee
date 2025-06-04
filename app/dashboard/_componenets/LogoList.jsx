@@ -1,61 +1,3 @@
-// "use client"
-// import { UserDetailContext } from '@/app/_context/UserDetailContext'
-// import { db } from '@/app/configs/FirebaseConfig';
-// import { collection, getDocs } from 'firebase/firestore';
-// import Image from 'next/image';
-// import React, { useContext, useEffect, useState } from 'react'
-
-// function LogoList() {
-//     const {userDetail,setUserDetail}=useContext(UserDetailContext);
-//     const [logoList,setLogoList]=useState([]);
-
-//     useEffect(()=>{
-//         userDetail&&GetUserLogos();
-//     },[userDetail])
-
-//     const GetUserLogos=async()=>{
-//         const querySnapshot= await getDocs(collection(db,"users",userDetail?.email,"logos"));
-//         setLogoList([]);
-//         querySnapshot.forEach((doc)=>{
-//             console.log(doc.data());
-//             setLogoList(prev=>[...prev,doc.data()])
-//         })
-//     }
-
-//     // const ViewLogo(image)={
-//     //     const imageWindow = window.open();
-//     //     imageWindow.document.write(`<img src="${image}" alt=Base64 Image" />`)
-//     // }
-
-//   return (
-//     <div className='mt-10'>
-//         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
-//             {logoList?.length>0?logoList.map((logo,index)=>(
-//                 <div key={index} className='hover:scale-105 transition-all cursor-pointer'
-//                 onClick={()=>ViewLogo(logo?.image)}
-//                 >
-//                     <Image src={logo?.image} width={400} height={200} alt={logo?.title}
-//                     className='w-full rounded-xl'
-//                     />
-//                     <h2 className='text-center text-lg mt-2 font-medium'>{logo?.title}</h2>
-//                     <p className='text-sm text-gray-500 text-center'>{logo?.desc}</p>
-//                 </div>
-//             )):
-//             [1,2,3,4,5,6].map((item,index)=>(
-//                 <div key={index} className='bg-slate-200 animate-pulse rounded-xl w-full h-[200px]'>
-
-//                 </div>
-//             ))
-//             }
-
-//         </div>
-      
-//     </div>
-//   )
-// }
-
-// export default LogoList
-
 "use client"
 import { UserDetailContext } from '@/app/_context/UserDetailContext'
 import { db } from '@/app/configs/FirebaseConfig'
@@ -69,6 +11,7 @@ import Image from 'next/image'
 import React, { useContext, useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import toast from 'react-hot-toast'
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 function LogoList() {
   const { userDetail } = useContext(UserDetailContext)
@@ -124,62 +67,77 @@ function LogoList() {
   }
 
   return (
-    <div className="mt-10 px-4">
-      <h2 className="text-2xl font-bold mb-6 text-center">Your Logo Collection</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {logoList?.length > 0 ? (
-          logoList.map((logo, index) => (
-            <div
-              key={index}
-              className="relative group bg-primary-foreground p-2 rounded-xl shadow hover:shadow-lg transition-all"
-            >
-              <div
-                onClick={() => ViewLogo(logo?.image)}
-                className="cursor-pointer"
-              >
-                <Image
-                  src={logo?.image}
-                  width={400}
-                  height={200}
-                  alt={logo?.title}
-                  className="w-full h-auto object-cover rounded-lg"
-                />
-                <h2 className="text-center text-lg mt-2 font-medium truncate text-cyan-950">
-                  {logo?.title}
-                </h2>
-                <p className="text-sm text-center truncate">
-                  {logo?.desc}
-                </p>
-              </div>
+   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-0">
 
-              <div className="flex justify-center gap-3 mt-3 ">
-                <Button onClick={() => ViewLogo(logo?.image)} 
-                variant="outline" 
-                size="sm" 
-                className='cursor-pointer'>
-                  View
-                </Button>
-                <Button
-                  onClick={() => DeleteLogo(logo?.id)}
-                  variant="destructive"
-                  size="sm"
-                  className='cursor-pointer'
-                >
-                  Delete
-                </Button>
-              </div>
-            </div>
-          ))
-        ) : (
-          [1, 2, 3, 4, 5, 6].map((item, index) => (
-            <div
-              key={index}
-              className="bg-slate-200 animate-pulse rounded-xl w-full h-[200px]"
-            ></div>
-          ))
-        )}
-      </div>
-    </div>
+  {logoList?.length > 0 ? (
+    logoList.map((logo, index) => (
+      <CardContainer key={index} className="inter-var">
+        <CardBody
+          className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full max-w-sm h-auto rounded-xl p-6 border mx-auto"
+          style={{ maxWidth: '320px' }} // ensure consistent max width inside grid cell
+        >
+          <CardItem
+            translateZ="50"
+            className="text-lg font-semibold text-neutral-800 dark:text-white text-center truncate"
+          >
+            {logo?.title || "Untitled"}
+          </CardItem>
+
+          <CardItem
+            as="p"
+            translateZ="60"
+            className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 text-center truncate"
+          >
+            {logo?.desc || "No description"}
+          </CardItem>
+
+          <CardItem
+            translateZ="100"
+            className="w-full mt-4 cursor-pointer"
+            onClick={() => ViewLogo(logo?.image)}
+          >
+            <img
+              src={logo?.image}
+              height="1000"
+              width="1000"
+              className="h-48 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt={logo?.title}
+            />
+          </CardItem>
+
+          <div className="flex justify-between items-center mt-6">
+            <CardItem
+              translateZ={20}
+              as="button"
+              onClick={() => ViewLogo(logo?.image)}
+              className="px-4 py-2 rounded-xl text-xs font-medium dark:text-white border border-neutral-300 dark:border-neutral-600 cursor-pointer"
+            >
+              View
+            </CardItem>
+
+            <CardItem
+              translateZ={20}
+              as="button"
+              onClick={() => DeleteLogo(logo?.id)}
+              className="px-4 py-2 rounded-xl bg-red-600 dark:bg-red-400 dark:text-black text-white text-xs font-bold cursor-pointer"
+            >
+              Delete
+            </CardItem>
+          </div>
+        </CardBody>
+      </CardContainer>
+    ))
+  ) : (
+    [1, 2, 3, 4, 5, 6].map((item, index) => (
+      <div
+        key={index}
+        className="bg-slate-200 animate-pulse rounded-xl w-full max-w-sm h-[300px] mx-auto my-2"
+        style={{ maxWidth: '320px' }}
+      />
+    ))
+  )}
+</div>
+
   )
 }
 
