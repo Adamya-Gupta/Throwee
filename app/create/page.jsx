@@ -32,7 +32,7 @@ function CreateLogo() {
     console.log(formData)
 
     return (
-        <div className='mt-10 p-5 border rounded-xl 2xl:mx-72 relative'>
+        <div className='mt-20 p-5 border rounded-xl 2xl:mx-72 relative space-y-2'>
            {step==1?
            <LogoTitle onHandleInputChange={(v) => onHandleInputChange('title', v)} formData={formData}/>:
            step==2?
@@ -53,6 +53,7 @@ function CreateLogo() {
             <div className='flex justify-between items-center mt-10'>
                 {step != 1 && <Button variant="outline" onClick={()=>setStep(step-1)}> <ArrowLeft /> Previous</Button>}
                 <Button onClick={()=>setStep(step+1)}> <ArrowRight /> Next</Button>
+
             </div>
             {mounted && theme === 'dark' ? (
             <BorderBeam duration={8} size={200} className="from-transparent via-green-500 to-transparent"/>

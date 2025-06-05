@@ -67,14 +67,14 @@ function LogoList() {
   }
 
   return (
-   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-0">
+   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-4">
 
   {logoList?.length > 0 ? (
     logoList.map((logo, index) => (
       <CardContainer key={index} className="inter-var">
         <CardBody
-          className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full max-w-sm h-auto rounded-xl p-6 border mx-auto"
-          style={{ maxWidth: '320px' }} // ensure consistent max width inside grid cell
+          className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full max-w-sm  rounded-xl p-6 border mx-auto"
+          style={{ maxWidth: '320px' , minHeight: '350px'  }} // ensure consistent max width inside grid cell
         >
           <CardItem
             translateZ="50"
@@ -86,7 +86,7 @@ function LogoList() {
           <CardItem
             as="p"
             translateZ="60"
-            className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 text-center truncate"
+            className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 text-center line-clamp-1"
           >
             {logo?.desc || "No description"}
           </CardItem>
@@ -128,7 +128,7 @@ function LogoList() {
       </CardContainer>
     ))
   ) : (
-    [1, 2, 3, 4, 5, 6].map((item, index) => (
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
       <div
         key={index}
         className="bg-slate-200 animate-pulse rounded-xl w-full max-w-sm h-[300px] mx-auto my-2"
