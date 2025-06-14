@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@adamtools/apifinder": "^1.0.3",
     "@clerk/nextjs": "^6.20.2",
     "@google/genai": "^1.3.0",
     "@radix-ui/react-slot": "^1.2.3",

@@ -1,6 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# <img src='./public/logo_dark.svg' width='35'> Throwee
 
-## Getting Started
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Adamya-Gupta/Throwee/blob/main/LICENSE)
+
+## 🔍 Overview:
+Throwee is a logo generation tool that uses the Gemmini API and Flux models to create visually stunning logos based on user prompts. It supports multiple themes, auto-suggestions, and is available in both light and dark modes.
+
+<div align="center">
+<table width="1000" >
+<tr>
+<td align="center">
+Landing Page
+<img src='./assets/dark.png' width='500'>
+</td>
+<td align="center">
+Dashboard
+<img src='./assets/dashboard.png' width='500'>
+</td>
+</tr>
+</table>
+</div>
+
+## 📌 Features
+- 🎨 Choose from 9 different themes
+- 🔄 Auto-generated prompt suggestions based on your description
+- 💾 User-specific logo history (stored in user accounts)
+- 🌗 Light and dark mode support
+- 🔤 Accurate text rendering
+- 🆓 Unfiltered input — name your project anything you want
+
+## 🛠️ Tech Stack
+- [Nextjs](https://nextjs.org/)
+- [GemminiAPI](https://ai.google.dev/)
+- [Hugging Face](https://huggingface.co/)
+- [Magic UI](https://magicui.design/)
+- [Aceternity UI](https://ui.aceternity.com/)
+- [Firebase](https://firebase.google.com/)
+- [Clerk](https://clerk.com/)
+
+## ⚙️Installation & Setup
+
+### Step 1: Clone the Repository
+
+```bash
+  # Clone the repository
+  git clone https://github.com/Adamya-Gupta/Throwee.git
+```
+
+### Step 2: Install Required Dependencies
+
+```bash
+# Install dependencies
+npm install
+```
+
+### Step 3: Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY= your_api_key
+CLERK_SECRET_KEY= your_secret_key
+
+NEXT_PUBLIC_FIREBASE_API_KEY= your_api_key
+NEXT_PUBLIC_GEMINI_API_KEY= your_api_key
+
+HUGGING_FACE_API_KEY= your_api_key
+```
+
+### Step 4: Run the development server:
+
 
 First, run the development server:
 
@@ -18,19 +86,32 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+| Route | Methods | File | Type |
+|-------|---------|------|------|
+| `\api\ai-design-ideas\route.jsx` | POST | `app\api\ai-design-ideas\route.jsx` | App Router |
+| `\api\ai-logo-model\route.jsx` | POST | `app\api\ai-logo-model\route.jsx` | App Router |
+| `\api\users\route.jsx` | POST | `app\api\users\route.jsx` | App Router |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+>[!NOTE]
+>API Documentation done using [@adamtools/apifinder](https://www.npmjs.com/package/@adamtools/apifinder) npm package.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+throwee
+├── public  # Static assets  
+├── app  # API routes, pages, and custom components       
+├── components    # Library components (MagicUI, ShadCN, etc.)
+├── lib   
+├── middleware.js # clerk configurations  
+├── .gitignore # Includes .env
+└── .env    
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Future Improvements
+- 💳 Integrate payment gateway for premium access
+- 💎 Add a premium model with enhanced design capabilities
+- 🧩 Introduce more customizable UI/UX components
