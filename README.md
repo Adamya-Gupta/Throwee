@@ -31,11 +31,12 @@ Dashboard
 ## 🛠️ Tech Stack
 - [Nextjs](https://nextjs.org/)
 - [GemminiAPI](https://ai.google.dev/)
-- [Hugging Face](https://huggingface.co/)
-- [Magic UI](https://magicui.design/)
-- [Aceternity UI](https://ui.aceternity.com/)
+- [Hugging Face](https://huggingface.co/black-forest-labs/FLUX.1-schnell)
 - [Firebase](https://firebase.google.com/)
 - [Clerk](https://clerk.com/)
+- [Shadcn](https://ui.shadcn.com/)
+- [Magic UI](https://magicui.design/)
+- [Aceternity UI](https://ui.aceternity.com/)
 
 ## ⚙️Installation & Setup
 
@@ -96,7 +97,7 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 | `\api\users\route.jsx` | POST | `app\api\users\route.jsx` | App Router |
 
 >[!NOTE]
->API Documentation done using [@adamtools/apifinder](https://www.npmjs.com/package/@adamtools/apifinder) npm package.
+>API documentation is auto-generated using [@adamtools/apifinder](https://www.npmjs.com/package/@adamtools/apifinder) npm package.
 
 ## 📁 Project Structure
 
